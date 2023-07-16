@@ -1,7 +1,30 @@
 <template>
-    <div>
+  <div>
+    <div class="pt-5 space-y-6">
+      <UIInput
+        label="Username"
+        placeholder="@username"
+        v-model="data.username"
+      />
+      <UIInput
+        label="Password"
+        placeholder="********"
+        v-model="data.password"
+        type="password"
+      />
 
-        <UIInput value="hello" label="Username"/>
+      <button @click="handleLogin">Login</button>
     </div>
+  </div>
 </template>
-<script setup></script>
+<script setup>
+const data = reactive({
+  username: '',
+  password: '',
+  loading: false,
+});
+
+const handleLogin = async () => {
+  const { login } = useAuth();
+};
+</script>

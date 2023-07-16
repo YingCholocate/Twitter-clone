@@ -1,19 +1,29 @@
 import { prisma } from '.';
 import bcrypt from 'bcrypt';
+
 export const createUser = (userData) => {
   const finalUserData = {
     ...userData,
-    password: bcrypt.hasSync(userData.password, 10),
+    password: bcrypt.hashSync(userData.password, 10),
   };
+
   return prisma.user.create({
-    data: userData,
+    data: finalUserData,
   });
 };
- export const getUserByUsername=(username)=>{
+
+export const getUserByUsername = (username) => {
   return prisma.user.findUnique({
-    where:{
-      username
-    }
-  })
- }
- 
+    where: {
+      username,
+    },
+  });
+};
+
+export const getUserById = (userId) => {
+  return prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+};

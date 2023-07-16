@@ -2,18 +2,16 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["referentialIntegrity"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider             = "mongnodb" //数据库
-  url                  = env("DATABASE_URL")
-  referentialIntegrity = "prisma"
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
 }
 
 model User {
-  id           String  @id @default(auto()) @map("_id") @db.ObkectId
+  id           Int     @id @default(autoincrement())
   email        String
   name         String?
   username     String  @unique
@@ -27,11 +25,11 @@ model User {
 }
 
 model RefreshToken {
-  id    String @id @default(auto()) @map("_id") @db.ObkectId
+  id    Int    @id @default(autoincrement())
   token String @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
   User      User?    @relation(fields: [userId], references: [id])
-  userId    String?  @db.ObkectId
+  userId    Int
 }

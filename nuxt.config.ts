@@ -2,8 +2,8 @@
 export default defineNuxtConfig({
   devtools: ['@nuxtjs/tailwindcss'],
 
-  runtimeConfig:{
-    jwtAcessSecreat:process.env.JWT_ACESS_TOKEN_SECREAT,
-    jwtRefreshSecreat:process.env.JWT_REFRESH_TOKEN_SECREAT,
-  }
+  runtimeConfig: {
+    jwtAcessSecreat: process.env.JWT_ACCESS_TOKEN_SECREAT,
+    jwtRefreshSecreat: process.env.JWT_REFRESH_TOKEN_SECREAT,
+  },
 });

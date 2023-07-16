@@ -1,33 +1,54 @@
-import jwt from "jsonwebtoken"
-const generateAcessToken=(user)=>{
-    const config=useRuntimeConfig();
-    return jwt.sign({userId:user.id},config.jwtAcessSecret,{
-        expiresIn:'10m'
-    })
+import jwt from 'jsonwebtoken';
 
-}
+const generateAccessToken = (user) => {
+  const config = useRuntimeConfig();
 
-const generateRefreshToken=(user)=>{
-    const config=useRuntimeConfig();
-    return jwt.sign({userId:user.id},config.jwtRefreshSecret,{
-        expiresIn:'10m'
-    })
+  return jwt.sign({ userId: user.id }, config.jwtAccessSecret, {
+    expiresIn: '10m',
+  });
+};
 
-}
+const generateRefreshToken = (user) => {
+  const config = useRuntimeConfig();
 
-export const generateToken=()=>{
-    const accessToken=generateAcessToken();
-    const refreshToken=generateRefreshToken()
+  return jwt.sign({ userId: user.id }, config.jwtRefreshSecret, {
+    expiresIn: '4h',
+  });
+};
 
-    return{
-        accessToken,
-        refreshToken
-    }
-}
+export const decodeRefreshToken = (token) => {
+  const config = useRuntimeConfig();
 
-export const sendRefreshgToken=(event,token)=>{
-    seetCookie(event.res,"refresh_token",token,{
-        httpOnly:true,
-        sameSite:true
-    })
-}
+  try {
+    return jwt.verify(token, config.jwtRefreshSecret);
+  } catch (error) {
+    return null;
+  }
+};
+
+export const decodeAccessToken = (token) => {
+  const config = useRuntimeConfig();
+
+  try {
+    return jwt.verify(token, config.jwtAccessSecret);
+  } catch (error) {
+    return null;
+  }
+};
+
+export const generateTokens = (user) => {
+  const accessToken = generateAccessToken(user);
+  const refreshToken = generateRefreshToken(user);
+
+  return {
+    accessToken: accessToken,
+    refreshToken: refreshToken,
+  };
+};
+
+export const sendRefreshToken = (event, token) => {
+  setCookie(event.res, 'refresh_token', token, {
+    httpOnly: true,
+    sameSite: true,
+  });
+};
