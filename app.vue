@@ -1,7 +1,7 @@
 <template>
   <div :class="{ dark: darkMode }">
     <div class="bg-white dark:bg-dim-900">
-      <LoadingPage v-if="true" />
+      <LoadingPage v-if="isAuthLoading" />
 
       <!-- App -->
       <div v-else-if="user" class="min-h-full">
@@ -45,8 +45,8 @@
 </template>
 <script setup>
 const darkMode = ref(false);
-// const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
-// const isAuthLoading = useAuthLoading();
+const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
+const isAuthLoading = useAuthLoading();
 // const {
 //   closePostTweetModal,
 //   usePostTweetModal,

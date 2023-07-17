@@ -2,7 +2,7 @@ module.exports = {
   darkMode: 'class',
   plugins:[
     require('@tailwindcss/forms')
-  ]
+  ],
   theme: {
     screens: {
       sm: '480px',
