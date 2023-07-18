@@ -17,6 +17,8 @@ export default defineEventHandler(async (event) => {
         return pattern.match(event.req.url)
     })
 
+
+
     if (!isHandledByThisMiddleware) {
         return
     }

@@ -83,7 +83,7 @@
       </div>
     </div>
 
-    <!-- <div
+    <div
       class="flex flex-row items-center justify-center px-2 py-2 mx-auto mt-auto mb-5 rounded-full cursor-pointer w-14 xl:w-full hover:bg-gray-100 dark:hover:bg-dim-800"
       :class="defaultTransition"
       @click="emits('onLogout')"
@@ -105,7 +105,7 @@
           <ChevronDownIcon />
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 <script setup>

@@ -6,9 +6,11 @@ import { createRefreshToken } from '~/server/db/refreshToken.js';
 import { sendError } from 'h3';
 
 export default defineEventHandler(async (event) => {
-  const body = await useBody(event);
+  const body = await readBody(event);
+
 
   const { username, password } = body;
+
 
   if (!username || !password) {
     return sendError(
@@ -27,7 +29,7 @@ export default defineEventHandler(async (event) => {
       event,
       createError({
         statusCode: 400,
-        statusMessage: 'Username or password is invalid',
+        statusMessage: 'Username or password is invalid1',
       }),
     );
   }
@@ -35,17 +37,19 @@ export default defineEventHandler(async (event) => {
   const doesThePasswordMatch = await bcrypt.compare(password, user.password);
 
   if (!doesThePasswordMatch) {
+
     return sendError(
       event,
       createError({
         statusCode: 400,
-        statusMessage: 'Username or password is invalid',
+        statusMessage: 'Username or password is invalid2',
       }),
     );
   }
 
   const { accessToken, refreshToken } = generateTokens(user);
 
+  console.log("WW",accessToken,refreshToken)
   await createRefreshToken({
     token: refreshToken,
     userId: user.id,

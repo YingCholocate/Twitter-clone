@@ -37,6 +37,7 @@ export const decodeAccessToken = (token) => {
 };
 
 export const generateTokens = (user) => {
+  console.log("dd",user)
   const accessToken = generateAccessToken(user);
   const refreshToken = generateRefreshToken(user);
 

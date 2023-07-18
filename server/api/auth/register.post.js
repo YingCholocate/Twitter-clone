@@ -2,7 +2,7 @@ import { sendError } from 'h3';
 import { createUser } from '~/server/db/user.js';
 import { userTransformer } from '~/server/transformer/user.js';
 export default defineEventHandler(async (event) => {
-  const body = await useBody(event);
+  const body = await readBody(event);
   const { username, email, password, repeatPassword, name } = body;
 
   if (!username || !email || !password || !repeatPassword || !name) {

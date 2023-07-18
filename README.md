@@ -61,3 +61,11 @@ yarn preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+# 在线查看修改数据库
+
+npx prisma studio
+
+# 推送数据库
+
+npx prisma db push

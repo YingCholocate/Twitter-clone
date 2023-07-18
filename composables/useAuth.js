@@ -1,9 +1,9 @@
 import jwt_decode from "jwt-decode"
 
-export default () => {
+export default () =>{
     const useAuthToken = () => useState('auth_token')
     const useAuthUser = () => useState('auth_user')
-    const useAuthLoading = () => useState('auth_loading', () => true)
+    const useAuthLoading = () => useState('auth_loading', () => false)
 
     const setToken = (newToken) => {
         const authToken = useAuthToken()
@@ -21,6 +21,7 @@ export default () => {
     }
 
     const login = ({ username, password }) => {
+        console.log("username",username,password)
         return new Promise(async (resolve, reject) => {
             try {
                 const data = await $fetch('/api/auth/login', {
@@ -30,6 +31,7 @@ export default () => {
                         password
                     }
                 })
+                console.log("login".data)
 
                 setToken(data.access_token)
                 setUser(data.user)
@@ -58,7 +60,7 @@ export default () => {
         return new Promise(async (resolve, reject) => {
             try {
                 const data = await useFetchApi('/api/auth/user')
-
+                console.log("getUser".data)
                 setUser(data.user)
                 resolve(true)
             } catch (error) {
