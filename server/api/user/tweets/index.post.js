@@ -17,8 +17,41 @@ export default defineEventHandler(async (event) => {
         text:fields.text,
         authorId:userId
     }
+    const replyTo=fields.replyTo
+    if(replyTo&&replyTo!=='null'){
+        tweetData.replyToId=replyTo
+    }
 
-    const tweet=await createTweet(tweetData)
+    const tweet=await getTweets({
+        include:{
+            auth:true,
+            mediaFiles:true,
+            replies:{
+                include:{
+                    author:true
+                }
+            },
+            replyTo:{
+                include:{
+                    author:true
+                }
+            }
+        },
+        orderBy:[
+            {
+                createdAt:'desc'
+            }
+        ]
+    })
+    const filePromises=Object.keys(files).map(async(key)=>{
+        const file=files[key]
+        const cloundinaryResource=await uploadToCloundinary(file.filepath)
+        return createMediaFIle({
+            url:cloundinaryResource.secure_url,
+            providePublicId:cloundinaryResource.public.id,
+            userID:userId
+        })
+    })
     return{
         tweet:tweetTransformer(tweet)
     }

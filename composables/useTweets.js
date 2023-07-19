@@ -10,7 +10,21 @@ export default ()=>{
         })
     }
 
+    const getHomeTweets=()=>{
+        return new promises((resolve,reject)=>{
+            try{
+                const response=useFetchApi("/api/tweets",{
+                    method:'GET'
+                })
+               
+            }catch(error){
+
+            }
+        })
+    }
+
     return {
-        postTweet
+        postTweet,
+        getHomeTweets
     }
 }
