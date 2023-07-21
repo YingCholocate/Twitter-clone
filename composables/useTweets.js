@@ -16,7 +16,8 @@ export default ()=>{
                 const response=useFetchApi("/api/tweets",{
                     method:'GET'
                 })
-               
+             
+               resolve(response)
             }catch(error){
 
             }

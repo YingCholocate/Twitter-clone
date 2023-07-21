@@ -1,9 +1,11 @@
 module.exports = {
+  content: [],
   darkMode: 'class',
   plugins:[
     require('@tailwindcss/forms')
   ],
   theme: {
+    //屏幕大小
     screens: {
       sm: '480px',
       md: '768px',

@@ -1,12 +1,12 @@
-import { sendError } from 'h3';
+import { sendError,getCookie } from 'h3';
+
 import { getRefreshTokenByToken } from '~/server/db/refreshToken.js';
 import { decodeRefreshToken, generateTokens } from '~/server/utils/jwt.js';
 import { getUserById } from '~/server/db/user.js';
 
 export default defineEventHandler(async (event) => {
-  const cookies = useCookies(event);
+  const refreshToken = getCookie(event,"refresh_token");
 
-  const refreshToken = cookies.refresh_token;
 
   if (!refreshToken) {
     return sendError(

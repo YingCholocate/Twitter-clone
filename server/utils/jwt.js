@@ -37,18 +37,18 @@ export const decodeAccessToken = (token) => {
 };
 
 export const generateTokens = (user) => {
-  console.log("dd",user)
   const accessToken = generateAccessToken(user);
   const refreshToken = generateRefreshToken(user);
 
   return {
-    accessToken: accessToken,
-    refreshToken: refreshToken,
+    accessToken:accessToken,
+    refreshToken:refreshToken
   };
 };
 
 export const sendRefreshToken = (event, token) => {
-  setCookie(event.res, 'refresh_token', token, {
+  console.log("event",event)
+  setCookie(event, 'refresh_token', token, {
     httpOnly: true,
     sameSite: true,
   });

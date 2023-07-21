@@ -24,6 +24,7 @@ export default defineEventHandler(async (event) => {
 
   const user = await getUserByUsername(username);
 
+  console.log("user",user)
   if (!user) {
     return sendError(
       event,
@@ -36,6 +37,7 @@ export default defineEventHandler(async (event) => {
 
   const doesThePasswordMatch = await bcrypt.compare(password, user.password);
 
+  console.log("does",doesThePasswordMatch)
   if (!doesThePasswordMatch) {
 
     return sendError(
@@ -48,8 +50,6 @@ export default defineEventHandler(async (event) => {
   }
 
   const { accessToken, refreshToken } = generateTokens(user);
-
-  console.log("WW",accessToken,refreshToken)
   await createRefreshToken({
     token: refreshToken,
     userId: user.id,

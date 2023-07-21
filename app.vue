@@ -12,13 +12,13 @@
                   <!-- Left sidebar -->
                   <div class="hidden md:block xs-col-span-1 xl:col-span-2">
                       <div class="sticky top-0">
-                          <SidebarLeft :user="user" @on-tweet="handleOpenTweetModal" @on-logout="handleUserLogout" />
+                          <SidebarLeft :user="user"/>
                       </div>
                   </div>
 
                   <!-- Main content -->
                   <main class="col-span-12 md:col-span-8 xl:col-span-6">
-                      <!-- <router-view /> -->
+                      <router-view />
                   </main>
 
                   <!-- Right Sidebar -->
@@ -51,7 +51,7 @@ const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth()
 const isAuthLoading = useAuthLoading()
 // const { closePostTweetModal, usePostTweetModal, openPostTweetModal, useReplyTweet } = useTweets()
 const user = useAuthUser()
-console.log(user)
+console.log("user",user)
 
 // const postTweetModal = usePostTweetModal()
 // const emitter = useEmitter()
@@ -65,9 +65,9 @@ console.log(user)
 //   darkMode.value = !darkMode.value
 // })
 
-// onBeforeMount(() => {
-//   initAuth()
-// })
+onBeforeMount(() => {
+  initAuth()
+})
 
 // function handleFormSuccess(tweet) {
 //   closePostTweetModal()

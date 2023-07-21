@@ -1,5 +1,6 @@
 import formidable from "formidable";
 import { tweetTransformer } from "~/server/transformer/tweet";
+import { getTweets } from "~/server/db/tweets";
 export default defineEventHandler(async (event) => {
     const form=formidable({})
     const response=await new Promise((resolve,reject)=>{
@@ -22,7 +23,7 @@ export default defineEventHandler(async (event) => {
         tweetData.replyToId=replyTo
     }
 
-    const tweet=await getTweets({
+    const tweets=await getTweets({
         include:{
             auth:true,
             mediaFiles:true,
@@ -53,7 +54,7 @@ export default defineEventHandler(async (event) => {
         })
     })
     return{
-        tweet:tweetTransformer(tweet)
+        tweet:tweetTransformer(tweets)
     }
 
 })

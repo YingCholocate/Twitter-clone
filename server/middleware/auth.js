@@ -24,6 +24,7 @@ export default defineEventHandler(async (event) => {
     }
 
     const token = event.req.headers['authorization']?.split(' ')[1]
+    //解码
 
     const decoded = decodeAccessToken(token)
 

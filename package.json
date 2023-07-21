@@ -14,6 +14,7 @@
     "@types/node": "^18",
     "bcrypt": "^5.1.0",
     "brcypt": "^1.0.1",
+    "h3": "^1.7.1",
     "nuxt": "^3.6.1",
     "prisma": "^5.0.0"
   },
@@ -25,6 +26,7 @@
     "human-time": "^0.0.2",
     "jsonwebtoken": "^9.0.1",
     "jwt-decode": "^3.1.2",
+    "universal-cookie": "^4.0.4",
     "url-pattern": "^1.0.3"
   }
 }
