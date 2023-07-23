@@ -24,7 +24,7 @@ model User {
   refreshToken RefreshToken[]
   //Tweet
   tweet        Tweet[]
-  MediaFile    MediaFile[]
+  mediaFile    MediaFile[]
 }
 
 model RefreshToken {

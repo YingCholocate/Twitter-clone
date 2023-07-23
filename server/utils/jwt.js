@@ -41,13 +41,13 @@ export const generateTokens = (user) => {
   const refreshToken = generateRefreshToken(user);
 
   return {
-    accessToken:accessToken,
-    refreshToken:refreshToken
+    accessToken: accessToken,
+    refreshToken: refreshToken,
   };
 };
 
 export const sendRefreshToken = (event, token) => {
-  console.log("event",event)
+  console.log('event', event);
   setCookie(event, 'refresh_token', token, {
     httpOnly: true,
     sameSite: true,

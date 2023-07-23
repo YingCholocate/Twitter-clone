@@ -1,9 +1,9 @@
 module.exports = {
   content: [],
   darkMode: 'class',
-  plugins:[
-    require('@tailwindcss/forms')
-  ],
+  // plugins:[
+  // require('@tailwindcss/forms')
+  // ],
   theme: {
     //屏幕大小
     screens: {
