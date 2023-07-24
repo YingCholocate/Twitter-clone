@@ -6,7 +6,7 @@ import { uploadToCloudinary } from '~/server/utils/cloudinary.js';
 
 export default defineEventHandler(async (event) => {
   const form = formidable({});
-
+  console.log(event.req)
   const response = await new Promise((resolve, reject) => {
     form.parse(event.req, (err, fields, files) => {
       if (err) {
@@ -17,14 +17,16 @@ export default defineEventHandler(async (event) => {
   });
 
   const { fields, files } = response;
+  console.log("fields",fields)
 
   const userId = event.context?.auth?.user?.id;
 
+
   const tweetData = {
     text: fields.text,
-    authorId: userId,
+    userId: userId,
   };
-
+  console.log("tweetData",tweetData)
   const replyTo = fields.replyTo;
 
   if (replyTo && replyTo !== 'null' && replyTo !== 'undefined') {
@@ -32,6 +34,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const tweet = await createTweet(tweetData);
+
 
   const filePromises = Object.keys(files).map(async (key) => {
     const file = files[key];

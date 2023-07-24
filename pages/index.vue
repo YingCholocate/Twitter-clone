@@ -5,7 +5,7 @@
         <Title>Home/Twitter</Title>
       </Head>
       <div class="border-b" :class="twitterBorderColor">
-        <TweetForm :user="user" @on-success="handleFormSucess()" />
+        <TweetForm :user="user" @on-success="handleFormSucess" />
       </div>
 
       <TweetListFeed :tweets="homeTweets" />
@@ -24,7 +24,7 @@ onBeforeMount(async () => {
   loading.value = true;
   try {
     const { tweets } = await getHomeTweets();
-    getHomeTweets.value = tweets;
+    // homeTweets.value = tweets;
   } catch (error) {
     console.log(error);
   } finally {
@@ -32,7 +32,7 @@ onBeforeMount(async () => {
   }
 });
 
-function handleFormSuccess(tweet) {
+function handleFormSucess(tweet) {
   navigateTo({
     path: `/status/${tweet.id}`,
   });

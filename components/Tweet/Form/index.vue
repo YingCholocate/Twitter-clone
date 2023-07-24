@@ -50,6 +50,8 @@ async function handleFormSubmit(data) {
       replyTo: props.replyTo?.id,
     });
 
+    console.log('respppponse',response)
+
     emits('onSuccess', response.tweet);
   } catch (error) {
     console.log(error);

@@ -53,7 +53,6 @@ const {
   useReplyTweet,
 } = useTweets();
 const user = useAuthUser();
-console.log('user', user);
 
 const postTweetModal = usePostTweetModal();
 const emitter = useEmitter();
