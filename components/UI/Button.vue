@@ -6,7 +6,6 @@
         <span :class="textFontSize">
             <slot />
         </span>
-
     </button>
 </template>
 <script setup>

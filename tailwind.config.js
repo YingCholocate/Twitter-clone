@@ -1,32 +1,28 @@
 module.exports = {
   content: [],
+
   darkMode: 'class',
-  // plugins:[
-  // require('@tailwindcss/forms')
+
+  // safelist: [
+  //   {
+  //     pattern: /text-(red|green|blue)-(100|400)/,
+  //     variants: ['group-hover'],
+  //   },
+  //   {
+  //     pattern: /bg-(red|green|blue)-(100|400)/,
+  //     variants: ['group-hover'],
+  //   },
   // ],
+
   theme: {
-    //屏幕大小
     screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px',
+      xs: '614px',
+      sm: '1002px',
+      md: '1022px',
+      lg: '1092px',
+      xl: '1280px',
     },
-    colors: {
-      blue: '#1fb6ff',
-      purple: '#7e5bef',
-      pink: '#ff49db',
-      orange: '#ff7849',
-      green: '#13ce66',
-      yellow: '#ffc82c',
-      'gray-dark': '#273444',
-      gray: '#8492a6',
-      'gray-light': '#d3dce6',
-    },
-    fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
-    },
+
     extend: {
       colors: {
         dim: {
@@ -42,13 +38,8 @@ module.exports = {
           900: '#15202b',
         },
       },
-      spacing: {
-        128: '32rem',
-        144: '36rem',
-      },
-      borderRadius: {
-        '4xl': '2rem',
-      },
     },
   },
+
+  plugins: [require('@tailwindcss/forms')],
 };

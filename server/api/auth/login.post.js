@@ -20,10 +20,8 @@ export default defineEventHandler(async (event) => {
     );
   }
 
-  console.log('uuu', username);
   const user = await getUserByUsername(username);
 
-  console.log('user', user);
   if (!user) {
     return sendError(
       event,

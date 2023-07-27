@@ -6,7 +6,6 @@ export const createUser = (userData) => {
     ...userData,
     password: bcrypt.hashSync(userData.password, 10),
   };
-  console.log('final', finalUserData);
 
   return prisma.user.create({
     data: finalUserData,
@@ -14,7 +13,6 @@ export const createUser = (userData) => {
 };
 
 export const getUserByUsername = (username) => {
-  console.log('username', username);
   return prisma.user.findUnique({
     where: {
       username,
@@ -23,7 +21,6 @@ export const getUserByUsername = (username) => {
 };
 
 export const getUserById = (userId) => {
-  console.log('userid', userId);
   return prisma.user.findUnique({
     where: {
       id: userId,

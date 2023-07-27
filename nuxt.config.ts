@@ -1,12 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: ['@nuxtjs/tailwindcss'],
+  // devtools: ['@nuxtjs/tailwindcss'],
   modules: ['@nuxtjs/tailwindcss'],
   build: {
-    transpile: ['@heroicons/vue']
-},
+    transpile: ['@heroicons/vue'],
+  },
+  css: ['~/assets/css/main.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 
-runtimeConfig: {
+  runtimeConfig: {
     jwtAccessSecret: process.env.JWT_ACCESS_TOKEN_SECREAT,
     jwtRefreshSecret: process.env.JWT_REFRESH_TOKEN_SECREAT,
 
@@ -14,5 +21,5 @@ runtimeConfig: {
     cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
     cloudinaryApiKey: process.env.CLOUDINARY_API_KEY,
     cloudinaryApiSecret: process.env.CLOUDINARY_API_SECRET,
-}
+  },
 });

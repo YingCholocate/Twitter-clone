@@ -4,6 +4,7 @@
             <div class="w-10 h-10">
                 <LogoTwitter />
             </div>
+          
         </div>
 
         <div class="pt-5 space-y-6">

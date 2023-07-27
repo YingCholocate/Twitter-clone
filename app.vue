@@ -43,6 +43,7 @@
   </div>
 </template>
 <script setup>
+ import "~/assets/css/main.css";
 const darkMode = ref(false);
 const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth();
 const isAuthLoading = useAuthLoading();

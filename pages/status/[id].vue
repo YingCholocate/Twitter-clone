@@ -25,12 +25,15 @@ function getTweetIdFromRoute() {
 async function getTweet() {
   loading.value = true;
   try {
-    const response = await getTweetById();
+    const response = await getTweetById(getTweetIdFromRoute() );
+    tweet.value=response.tweet
   } catch (error) {
     console.log(error);
   } finally {
     loading.value = false;
   }
 }
-onBeforeMount(() => {});
+onBeforeMount(() => {
+  getTweet()
+});
 </script>

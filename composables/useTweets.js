@@ -22,19 +22,18 @@ export default () => {
 
   const postTweet = (formData) => {
     const form = new FormData();
-    console.log("formDData:",formData)
-
     form.append('text', formData.text);
     form.append('replyTo', formData.replyTo);
 
     formData.mediaFiles.forEach((mediaFile, index) => {
       form.append('media_file_' + index, mediaFile);
     });
-    console.log("form",form)
+    console.log('form', form);
 
     return useFetchApi('/api/user/tweets', {
       method: 'POST',
       body: form,
+      headers: 'Content-Type:multipart/form-data',
     });
   };
 
@@ -45,7 +44,7 @@ export default () => {
           method: 'GET',
           params,
         });
-    resolve(response);
+        resolve(response);
       } catch (error) {
         reject(error);
       }

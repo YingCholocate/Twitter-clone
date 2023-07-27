@@ -24,7 +24,8 @@ onBeforeMount(async () => {
   loading.value = true;
   try {
     const { tweets } = await getHomeTweets();
-    // homeTweets.value = tweets;
+    console.log("tweets",tweets)
+    homeTweets.value = tweets;
   } catch (error) {
     console.log(error);
   } finally {
