@@ -69,3 +69,7 @@ npx prisma studio
 # 推送数据库
 
 npx prisma db push
+
+# 初始化数据库
+
+npx prisma migrate dev --name init
